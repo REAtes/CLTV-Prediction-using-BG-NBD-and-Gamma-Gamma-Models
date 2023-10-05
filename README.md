@@ -21,36 +21,35 @@ The dataset consists of information about customers who made their last purchase
 
 ## Tasks
 
-### Task 1: Data Preparation
-1. Read the "data.csv" dataset and create a copy of the DataFrame.
-2. Define the `outlier_thresholds` and `replace_with_thresholds` functions to handle outliers in certain columns.
-3. Identify and replace outliers in the columns: "order_num_total_ever_online", "order_num_total_ever_offline", "customer_value_total_ever_offline", and "customer_value_total_ever_online".
-4. Create new variables for the total number of purchases and total customer value for OmniChannel customers.
-5. Convert date columns to the "date" data type.
+### Data Preparation
 
-### Task 2: Creating the CLTV Data Structure
-1. Set the analysis date as 2 days after the last purchase in the dataset.
-2. Create a new DataFrame (`cltv_df`) to store customer_id, recency_cltv_weekly, T_weekly, frequency, and monetary_cltv_avg.
-3. Calculate `recency_cltv_weekly`, `T_weekly`, `frequency`, and `monetary_cltv_avg` for each customer.
+1. The dataset is read, and data exploration is conducted to understand its structure.
+2. Outliers in certain columns are identified and replaced with threshold values.
+3. New variables for the total number of purchases and total customer value for OmniChannel customers are created.
+4. Date columns are converted to the "date" data type.
 
-### Task 3: Building BG/NBD and Gamma-Gamma Models, Calculating 6-Month CLTV
-1. Fit the BG/NBD model to predict expected customer sales within 3 months and 6 months.
-2. Fit the Gamma-Gamma model to predict the expected average customer value.
-3. Calculate the 6-month CLTV and standardize the CLTV values.
-4. Identify the top 20 customers with the highest CLTV.
+### Creating the CLTV Data Structure
 
-### Task 4: Creating Segments Based on CLTV
-1. Divide all customers into 4 segments based on their standardized 6-month CLTV and add segment labels to the dataset (`cltv_segment`).
-2. Provide short action recommendations for two selected segments.
+1. The analysis date is set as 2 days after the last purchase in the dataset.
+2. A new DataFrame (cltv_df) is created to store customer_id, recency_cltv_weekly, T_weekly, frequency, and monetary_cltv_avg.
+3. Recency_cltv_weekly, T_weekly, frequency, and monetary_cltv_avg are calculated for each customer.
 
-### Bonus Task: Functionize the Entire Process
-1. Create a function (`create_cltv_df`) to perform the entire CLTV prediction process and return the resulting DataFrame.
+### Building BG/NBD Models
+
+1. The BG/NBD (Beta Geometric/Negative Binomial Distribution) model is fitted to predict expected customer sales within 3 months, 6 months, 9 months, and 12 months.
+
+### Building Gamma-Gamma Models
+
+1. The Gamma-Gamma model is fitted to predict the expected average customer value.
+2. The 6-month CLTV is calculated, and the CLTV values are standardized.
+3. The top 20 customers with the highest CLTV are identified.
 
 ## Usage
 To use the provided code, follow these steps:
 1. Ensure you have the required libraries installed, including pandas, datetime, lifetimes, and sklearn.
 2. Load the dataset "data.csv" into the appropriate directory.
-3. Run the code, which includes data preparation, CLTV modeling, segmentation, and optional functionization.
+3. Run the code, which includes data preparation, CLTV modeling, segmentation, and optional functionalization.
 
-## Conclusion
-This code demonstrates how to prepare and analyze customer data to predict customer lifetime value (CLTV) using BG-NBD and Gamma-Gamma models. The resulting CLTV segments can help the retail company make data-driven decisions and prioritize marketing efforts.
+### Results
+
+The analysis provides insights into customer segments, predicted sales, and customer value. Specific customer segments and top-performing customers are highlighted. The resulting CLTV segments can help the retail company make data-driven decisions and prioritize marketing efforts.
